@@ -1,131 +1,86 @@
-#include <stdlib.h>
-#include <stdio.h>
-typedef struct s_lst
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/01 15:22:54 by oused-da          #+#    #+#             */
+/*   Updated: 2026/01/01 19:17:51 by oused-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+static int	is_sorted(t_lst *a)
 {
-	int data;
-	struct s_lst *next;
-	struct s_lst *prev;
-} t_lst;
-t_lst *nlst(int data)
-{
-	t_lst *n = malloc(sizeof(t_lst));
-	if(!n)
-		return NULL;
-	n->data = data;
-	n->next=NULL;
-	n->prev=NULL;
-	return n;
+	if (!a)
+		return (1);
+	while(a->next)
+	{
+		if (a->data > a->next->data)
+			return (0);
+		a = a->next;
+	}
+	return (1);
 }
-t_lst *lstlast(t_lst *lst)
+
+static void	sort_three(t_lst **a)
 {
-	if (!lst) return NULL;
-	while(lst->next)
-		lst=lst->next;
-	return lst;
-}
-void addback(t_lst **lst, t_lst *n)
-{
-	if(!lst || !n) return;
-	if(!*lst){
-		*lst = n;
+	int	top;
+	int	mid;
+	int	bot;
+
+	if (!a || !(*a) || !(*a)->next || !(*a)->next->next)
 		return ;
-	}
-	t_lst *last;
-	last = lstlast(*lst);
-	last->next=n;
-	n->prev=last;
+	top = (*a)->data;
+	mid = (*a)->next->data;
+	bot = (*a)->next->next->data;
+	if(top > mid && top > bot)
+		ra(a);
+	else if (mid > top && mid > bot)
+		rra(a);
+	if ((*a)->data > (*a)->next->data)
+		sa(a);
 }
-void addfront(t_lst **lst, t_lst *n)
+
+int	main(int c, char **v)
 {
-	if(!lst || !n) return;
-	if(*lst){
-		(*lst)->prev=n;
-		n->next = (*lst);
-	}
-	n->prev=NULL;
-	(*lst) = n;
-}
-// int lstsize(t_lst *lst)
-// {
-// 	int s = 0;
-// 	while(lst)
-// 	{
-// 		s++;
-// 		lst=lst->next;
-// 	}
-// 	return s;
-// }
-void swap(t_lst **lst){
-	if(!lst || !*lst || !(*lst)->next)return;
-	int s = (*lst)->data;
-	(*lst)->data = (*lst)->next->data;
-	(*lst)->next->data=s;
-}
-void push(t_lst **src, t_lst **dst){
-	if(!src || !*src)return;
-	int p = (*src)->data;
-	addfront(dst, nlst(p));
-	t_lst *tmp = (*src);
-	if((*src)->next){
-		(*src)=(*src)->next;
-		(*src)->prev=NULL;
+	t_lst	*a;
+	t_lst	*b;
+	char	**args;
+	int		use_split;
+
+	a = NULL;
+	b = NULL;
+	use_split = 0;
+	if (c < 2)
+		return 0;
+	if (c == 2)
+	{
+		args = ft_split(v[1]);
+		use_split = 1;
 	}
 	else
-		(*src) = NULL;
-	free(tmp);
-}
-void rotate(t_lst **lst)
-{
-	t_lst *last = lstlast(*lst);
-	t_lst *fst = (*lst);
-	if(!lst || !*lst || !(*lst)->next)return;
-	(*lst)= fst->next;
-	(*lst)->prev=NULL;
-	last->next=fst;
-	fst->prev=last;
-	fst->next=NULL;
-}
-void reverse_rotate(t_lst **lst)
-{
-	t_lst *last = lstlast(*lst);
-	t_lst *fst = (*lst);
-	if(!lst || !*lst || !(*lst)->next)return;
-	last->prev->next=NULL;
-	last->next=fst;
-	last->prev=NULL;
-	fst->prev=last;
-	(*lst) = last;
-}
-int main()
-{
-	t_lst *lst = nlst(10);
-	t_lst *d = NULL;
-	addfront(&lst, nlst(20));
-	addback(&lst, nlst(30));
-	swap(&lst);
-	printf("Swap:\nA:[%d] <-> [%d] <-> [%d] <-> NULL\n", lst->data, lst->next->data, lst->next->next->data);
-	push(&lst, &d);
-	printf("Push:\nB:\n[%d] <-> NULL\n",d->data);
-	printf("A:\n");
-	t_lst *p = lst;
-	while(p){
-		printf("[%d] <-> ", p->data);
-		p=p->next;
+		args = v + 1;
+	fill_stack(&a, args, use_split);
+	if (use_split)
+		free_split(args);
+	if (!a || is_sorted(a))
+		return (free_stack(&a), 0);
+	if (!is_sorted(a))
+	{
+		if (lstsize(a) == 2)
+			sa(&a);
+		else if (lstsize(a) == 3)
+			sort_three(&a);
+		else
+		{
+			indexing(&a);
+			butterfly(&a, &b);
+			butterfly_return(&a, &b);
+		}
 	}
-	printf("NULL");
-	rotate(&lst);
-	printf("\nRotate A :\n");
-	t_lst *r=lst;
-	while(r){
-		printf("[%d] <-> ", r->data);
-		r=r->next;
-	}
-	printf("NULL");
-	printf("\nReverse Rotate A :\n");
-	reverse_rotate(&lst);
-	while(lst){
-		printf("[%d] <-> ", lst->data);
-		lst=lst->next;
-	}
-	printf("NULL");
+	free_stack(&a);
+	free_stack(&b);
+	return (0);
 }

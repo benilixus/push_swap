@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:52:19 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/01 13:13:18 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/01 16:28:03 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,14 @@ void	addfront(t_lst **lst, t_lst *new)
 }
 
 int	lstsize(t_lst *lst)
-void	ft_putsrt(char *s, int fd)
 {
-	int	i;
+	int	s;
 
-	i = 0;
-	while (s[i])
-		write(fd, &s[i++], 1);
+	s = 0;
+	while (lst)
+	{
+		s++;
+		lst = lst->next;
+	}
+	return (s);
 }

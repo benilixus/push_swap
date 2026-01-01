@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:51:55 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/01 13:12:49 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/01 19:20:36 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
+# include <stddef.h>
+# define SIZE_MAX __SIZE_MAX__
 
 typedef struct s_lst
 {
@@ -28,8 +31,21 @@ t_lst	*newlst(int data, int index);
 void	addback(t_lst **lst, t_lst *new);
 void	addfront(t_lst **lst, t_lst *new);
 int		lstsize(t_lst *lst);
+void	free_stack(t_lst **lst);
 // print
-void	ft_putsrt(char *s, int fd)
+void	ft_putsrt(char *s, int fd);
+int		is_digit(char c);
+//parsing
+long	ft_atol(const char *n);
+char	**ft_split(char *s);
+char	**free_split(char **args);
+void	*ft_calloc(size_t nmemb, size_t size);
+int		check_ovflow(long n);
+int		check_dup(t_lst *a, int n);
+int		all_digits(char *args);
+//Error
+void	error_exit(t_lst **a, char **args, int use_split);
+void	fill_stack(t_lst **a, char **v, int use_split);
 //swap
 void	sa(t_lst **a);
 void	sb(t_lst **b);
@@ -45,4 +61,10 @@ void	rrr(t_lst **a, t_lst **b);
 void	ra(t_lst **a);
 void	rb(t_lst **b);
 void	rr(t_lst **a, t_lst **b);
+//indexing
+void	indexing(t_lst **lst);
+//moving
+void	butterfly(t_lst **a, t_lst **b);
+void	butterfly_return(t_lst **a, t_lst **b);
+
 #endif
