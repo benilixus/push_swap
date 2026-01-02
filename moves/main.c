@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 15:22:54 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/02 10:30:36 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/02 13:32:57 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	sort_three(t_lst **a)
 		sa(a);
 }
 
-static void	check(t_lst **a, t_lst **b)
+static void	run_sort(t_lst **a, t_lst **b)
 {
 	if (lstsize(*a) == 2)
 		sa(a);
 	else if (lstsize(*a) == 3)
 		sort_three(a);
-	else if (lstsize(*a) == 5)
+	else if (lstsize(*a) <= 5)
 		sort_five(a, b);
 	else
 	{
@@ -66,27 +66,22 @@ int	main(int c, char **v)
 {
 	t_lst	*a;
 	t_lst	*b;
-	char	**args;
-	int		use_split;
+	int		i;
 
 	a = NULL;
 	b = NULL;
-	use_split = 0;
+	i = 1;
 	if (c < 2)
 		return (0);
-	if (c == 2)
+	while (i < c)
 	{
-		args = ft_split(v[1]);
-		use_split = 1;
+		if (is_empty_arg(v[i]))
+			error_exit(&a, NULL, 0);
+		process_arg(&a, v[i]);
+		i++;
 	}
-	else
-		args = v + 1;
-	fill_stack(&a, args, use_split);
-	if (use_split)
-		free_split(args);
 	if (!a || is_sorted(a))
 		return (free_stack(&a), 0);
-	if (!is_sorted(a))
-		check(&a, &b);
+	run_sort(&a, &b);
 	return (0);
 }
