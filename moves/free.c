@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 16:27:15 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/01 18:20:16 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/02 09:56:19 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_stack(t_lst **lst)
 {
 	t_lst	*tmp;
 
-	if(!lst || !(*lst))
+	if (!lst || !(*lst))
 		return ;
 	while (*lst)
 	{

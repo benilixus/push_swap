@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 17:37:24 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/01 18:41:54 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/02 09:57:07 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	all_digits(char *args)
 
 int	check_dup(t_lst *a, int n)
 {
-	while(a)
+	while (a)
 	{
 		if (a->data == n)
 			return (1);
-		a = a->next;	
+		a = a->next;
 	}
 	return (0);
 }
