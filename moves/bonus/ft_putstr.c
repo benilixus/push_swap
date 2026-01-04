@@ -6,11 +6,11 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 16:28:06 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/04 14:55:59 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 14:55:50 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	ft_putstr(char *s, int fd)
 {

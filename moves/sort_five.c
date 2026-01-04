@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 10:22:46 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/02 10:25:45 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:09:00 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	sort_five(t_lst **a, t_lst **b)
 {
 	int	min;
 
-	min = find_min(*a);
-	move_to_top(a, min);
-	pb(a, b);
-	min = find_min(*a);
-	move_to_top(a, min);
-	pb(a, b);
+	while (lstsize(*a) > 3)
+	{
+		min = find_min(*a);
+		move_to_top(a, min);
+		pb(a, b);
+	}
 	sort_three(a);
-	pa(a, b);
-	pa(a, b);
+	while (*b)
+		pa(a, b);
 }

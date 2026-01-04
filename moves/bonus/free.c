@@ -1,42 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 11:27:37 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/02 11:28:44 by oused-da         ###   ########.fr       */
+/*   Created: 2026/01/01 16:27:15 by oused-da          #+#    #+#             */
+/*   Updated: 2026/01/04 14:55:21 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	main(int c, char **v)
+char	**free_split(char **args)
 {
-	t_lst	*a;
-	t_lst	*b;
-	char	**args;
-	int		use_split;
+	int	i;
 
-	a = NULL;
-	b = NULL;
-	use_split = 0;
-	if (c < 2)
-		return (0);
-	if (c == 2)
+	if (!args)
+		return (NULL);
+	i = 0;
+	while (args[i])
 	{
-		args = ft_split(v[1]);
-		use_split = 1;
+		free(args[i]);
+		i++;
 	}
-	else
-		args = v + 1;
-	fill_stack(&a, args, use_split);
+	free(args);
+	return (NULL);
+}
+
+void	free_stack(t_lst **lst)
+{
+	t_lst	*tmp;
+
+	if (!lst || !(*lst))
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
+	*lst = NULL;
+}
+
+void	error_exit(t_lst **a, char **args, int use_split)
+{
+	free_stack(a);
 	if (use_split)
 		free_split(args);
-	if (!a || is_sorted(a))
-		return (free_stack(&a), 0);
-	if (!is_sorted(a))
-		check(&a, &b);
-	return (0);
+	ft_putstr("Error\n", 2);
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:51:55 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/02 13:23:49 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 14:59:22 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	addfront(t_lst **lst, t_lst *new);
 int		lstsize(t_lst *lst);
 void	free_stack(t_lst **lst);
 // print
-void	ft_putsrt(char *s, int fd);
+void	ft_putstr(char *s, int fd);
 int		is_digit(char c);
 //parsing
 long	ft_atol(const char *n);
@@ -47,7 +47,6 @@ void	process_arg(t_lst **a, char *str);
 int		is_empty_arg(char *s);
 //Error
 void	error_exit(t_lst **a, char **args, int use_split);
-void	fill_stack(t_lst **a, char **v, int use_split);
 //swap
 void	sa(t_lst **a);
 void	sb(t_lst **b);

@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:53:05 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/01 13:13:14 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 14:58:04 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sa(t_lst **a)
 	if (!a || !(*a) || !(*a)->next)
 		return ;
 	swap(a);
-	ft_putsrt("sa\n", 1);
+	ft_putstr("sa\n", 1);
 }
 
 void	sb(t_lst **b)
@@ -38,7 +38,7 @@ void	sb(t_lst **b)
 	if (!b || !(*b) || !(*b)->next)
 		return ;
 	swap(b);
-	ft_putsrt("sb\n", 1);
+	ft_putstr("sb\n", 1);
 }
 
 void	ss(t_lst **a, t_lst **b)
@@ -59,5 +59,5 @@ void	ss(t_lst **a, t_lst **b)
 		s_b = 1;
 	}
 	if (s_a || s_b)
-		ft_putsrt("ss\n", 1);
+		ft_putstr("ss\n", 1);
 }

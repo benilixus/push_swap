@@ -6,11 +6,11 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:52:05 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/04 14:57:16 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 13:45:28 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static void	push(t_lst **src, t_lst **dst)
 {
@@ -39,7 +39,6 @@ void	pa(t_lst **a, t_lst **b)
 	if (!b || !(*b))
 		return ;
 	push(b, a);
-	ft_putstr("pa\n", 1);
 }
 
 void	pb(t_lst **a, t_lst **b)
@@ -47,5 +46,4 @@ void	pb(t_lst **a, t_lst **b)
 	if (!a || !(*a))
 		return ;
 	push(a, b);
-	ft_putstr("pb\n", 1);
 }

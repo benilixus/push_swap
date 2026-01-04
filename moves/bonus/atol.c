@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   atol.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/01 16:28:06 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/04 14:55:59 by oused-da         ###   ########.fr       */
+/*   Created: 2026/01/01 15:25:05 by oused-da          #+#    #+#             */
+/*   Updated: 2026/01/04 12:46:57 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	ft_putstr(char *s, int fd)
+int	is_digit(char c)
 {
-	int	i;
+	return (c >= 48 && c <= 57);
+}
+
+long	ft_atol(const char *n)
+{
+	int		i;
+	int		s;
+	long	r;
 
 	i = 0;
-	while (s[i])
-		write(fd, &s[i++], 1);
+	s = 1;
+	r = 0;
+	while (n[i] == 32 || (n[i] >= 9 && n[i] <= 13))
+		i++;
+	if (n[i] == '-' || n[i] == '+')
+	{
+		if (n[i] == '-')
+			s *= -1;
+		i++;
+	}
+	while (is_digit(n[i]))
+	{
+		r = r * 10 + (n[i] - 48);
+		i++;
+	}
+	return (r * s);
 }

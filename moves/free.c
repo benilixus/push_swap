@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 16:27:15 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/02 09:56:19 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 14:59:04 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,13 @@ void	free_stack(t_lst **lst)
 		*lst = tmp;
 	}
 	*lst = NULL;
+}
+
+void	error_exit(t_lst **a, char **args, int use_split)
+{
+	free_stack(a);
+	if (use_split)
+		free_split(args);
+	ft_putstr("Error\n", 2);
+	exit(1);
 }
