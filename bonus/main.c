@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 11:27:37 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/04 14:55:33 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 16:19:44 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	read_move(t_lst	**a, t_lst **b)
 	int		check;
 	char	*move;
 
+	check = 0;
 	move = get_next_line(0);
 	while (move != NULL)
 	{
@@ -67,6 +68,7 @@ void	read_move(t_lst	**a, t_lst **b)
 		{
 			free(move);
 			free_stack(b);
+			get_next_line(-1);
 			error_exit(a, NULL, 0);
 		}
 		free(move);

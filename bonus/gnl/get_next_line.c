@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oused-da <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:48:06 by oused-da          #+#    #+#             */
-/*   Updated: 2025/11/27 15:48:09 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 16:23:29 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
+	if (fd == -1)
+	{
+		free(stash);
+		stash = NULL;
+		return (NULL);
+	}
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash = read_file(fd, stash);
