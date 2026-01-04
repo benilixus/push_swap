@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:51:55 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/04 14:59:22 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:27:09 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	rb(t_lst **b);
 void	rr(t_lst **a, t_lst **b);
 //indexing
 void	indexing(t_lst **lst);
-//moving
 void	butterfly(t_lst **a, t_lst **b);
 void	butterfly_return(t_lst **a, t_lst **b);
 void	sort_five(t_lst **a, t_lst **b);

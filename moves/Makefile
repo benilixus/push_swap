@@ -1,5 +1,7 @@
 NAME = push_swap
 BONUS_NAME = checker
+INCLUDES = push_swap.h
+BINCLUDES = bonus/checker.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -18,13 +20,19 @@ BOBJ = $(BSRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(INCLUDES)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.c $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_NAME)
 
-$(BONUS_NAME): $(BOBJ)
+$(BONUS_NAME): $(BOBJ) $(BINCLUDES)
 	$(CC) $(CFLAGS) $(BOBJ) -o $(BONUS_NAME)
+
+bonus/%.o: bonus/%.c $(BINCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(BOBJ)

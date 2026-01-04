@@ -17,10 +17,8 @@ void	addback(t_lst **lst, t_lst *new);
 void	addfront(t_lst **lst, t_lst *new);
 void	free_stack(t_lst **lst);
 t_lst	*lstlast(t_lst *lst);
-
 void	ft_putstr(char *s, int fd);
 int		is_digit(char c);
-
 long	ft_atol(const char *n);
 int		ft_strcmp(const char *s1, const char *s2);
 char	**ft_split(char *s);
@@ -31,9 +29,7 @@ int		check_dup(t_lst *a, int n);
 int		all_digits(char *args);
 void	process_arg(t_lst **a, char *str);
 int		is_empty_arg(char *s);
-
 void	error_exit(t_lst **a, char **args, int use_split);
-
 void	sa(t_lst **a);
 void	sb(t_lst **b);
 void	ss(t_lst **a, t_lst **b);
