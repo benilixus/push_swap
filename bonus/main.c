@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 11:27:37 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/04 16:19:44 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/06 18:35:08 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	do_move(t_lst **a, t_lst **b, char *move)
 	else if (!ft_strcmp(move, "ss\n"))
 		ss(a, b);
 	else if (!ft_strcmp(move, "pa\n"))
-		pa(b, a);
+		pa(a, b);
 	else if (!ft_strcmp(move, "pb\n"))
 		pb(a, b);
 	else if (!ft_strcmp(move, "ra\n"))
