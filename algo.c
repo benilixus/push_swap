@@ -6,7 +6,7 @@
 /*   By: oused-da <oused-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 15:02:40 by oused-da          #+#    #+#             */
-/*   Updated: 2026/01/01 19:23:53 by oused-da         ###   ########.fr       */
+/*   Updated: 2026/01/10 14:23:01 by oused-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,30 @@ static int	get_pos(t_lst *lst, int target)
 	return (-1);
 }
 
+// int is_chunk_at_bottom(t_lst *stack, int limit)
+// {
+//     int     len;
+//     int     i;
+//     t_lst   *tmp;
+
+//     len = lstsize(stack);
+//     if (len < 5) 
+//         return (0);
+//     i = 0;
+//     tmp = stack;
+//     while (tmp)
+//         tmp = tmp->next;
+// 	tmp = ft_lstlast(stack); 
+//     while (i < 5 && tmp)
+//     {
+//         if (tmp->index <= limit)
+//             return (1);
+//         tmp = tmp->prev;
+//         i++;
+//     }
+//     return (0);
+// }
+
 void	butterfly(t_lst **a, t_lst **b)
 {
 	int	count;
@@ -36,7 +60,7 @@ void	butterfly(t_lst **a, t_lst **b)
 	if (lstsize(*a) <= 100)
 		n = 15;
 	else
-		n = 30;
+		n = 40;
 	while (*a)
 	{
 		if ((*a)->index <= count)

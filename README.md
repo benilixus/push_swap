@@ -4,6 +4,7 @@
 
 ## Description
 
+### Overview
 **Push_swap** is a project that involves sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed, you have to manipulate various types of algorithms and choose the most appropriate solution (out of many) for optimized data sorting.
 
 The project consists of two programs:
@@ -15,6 +16,14 @@ The allowable operations are:
 * `pa`, `pb`: Push the top element from one stack to another.
 * `ra`, `rb`, `rr`: Rotate the stack (first element becomes last).
 * `rra`, `rrb`, `rrr`: Reverse rotate the stack (last element becomes first).
+
+### Algorithm Strategy: The "Butterfly" Approach
+The project utilizes a **Chunk-based Sorting Strategy** (often called the Butterfly algorithm) optimized for `push_swap`'s specific constraints:
+1.  **Indexing:** First, all values are mapped to their rank (0 to N-1) to simplify comparisons.
+2.  **Chunking (A to B):** We define a dynamic range (chunk size). We scan Stack A and push elements that fall within `current_index` and `current_index + range` to Stack B.
+    * If the element is in the *lower half* of the range, we rotate Stack B (`rb`).
+    * This creates a distribution in Stack B where the largest elements end up near the top or bottom, forming a "butterfly" shape.
+3.  **Return (B to A):** We simply push elements back to Stack A, always selecting the current maximum available in B to ensure Stack A is sorted.
 
 ## Instructions
 
@@ -59,14 +68,6 @@ ra
 (Press CTRL+D)
 ```
 ## Resources
-
-### Algorithm Strategy: The "Butterfly" Approach
-The project utilizes a **Chunk-based Sorting Strategy** (often called the Butterfly algorithm) optimized for `push_swap`'s specific constraints:
-1.  **Indexing:** First, all values are mapped to their rank (0 to N-1) to simplify comparisons.
-2.  **Chunking (A to B):** We define a dynamic range (chunk size). We scan Stack A and push elements that fall within `current_index` and `current_index + range` to Stack B.
-    * If the element is in the *lower half* of the range, we rotate Stack B (`rb`).
-    * This creates a distribution in Stack B where the largest elements end up near the top or bottom, forming a "butterfly" shape.
-3.  **Return (B to A):** We simply push elements back to Stack A, always selecting the current maximum available in B to ensure Stack A is sorted.
 
 ### References & Tools
 * **Peer Contribution:** Special thanks to **aamajjou** for explaining the core concepts and logic of the project.
