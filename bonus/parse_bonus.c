@@ -67,6 +67,7 @@ int	check_ovflow(long n)
 void	process_arg(t_lst **a, char *str)
 {
 	char	**split_args;
+	t_lst	*new;
 	int		j;
 	long	n;
 
@@ -83,7 +84,10 @@ void	process_arg(t_lst **a, char *str)
 			error_exit(a, split_args, 1);
 		if (check_dup(*a, (int)n))
 			error_exit(a, split_args, 1);
-		addback(a, newlst((int)n, -1));
+		new = newlst((int)n, -1);
+		if (!new)
+			error_exit(a, split_args, 1);
+		addback(a, new);
 		j++;
 	}
 	free_split(split_args);
