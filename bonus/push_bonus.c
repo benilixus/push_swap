@@ -15,14 +15,18 @@
 static void	push(t_lst **src, t_lst **dst)
 {
 	t_lst	*tmp;
-	int		data;
-	int		index;
+	t_lst	*new;
 
 	if (!src || !(*src))
 		return ;
-	data = (*src)->data;
-	index = (*src)->index;
-	addfront(dst, newlst(data, index));
+	new = newlst((*src)->data, (*src)->index);
+	if (!new)
+	{
+		if (dst)
+			free_stack(dst);
+		error_exit(src, NULL, 0);
+	}
+	addfront(dst, new);
 	tmp = (*src);
 	if ((*src)->next)
 	{
