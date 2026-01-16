@@ -1,4 +1,3 @@
-*This project has been created as part of the 42 curriculum by oused-da.*
 
 # Push_swap
 
@@ -67,8 +66,3 @@ sa
 ra
 (Press CTRL+D)
 ```
-## Resources
-
-### References & Tools
-* **Peer Contribution:** Special thanks to **aamajjou** for explaining the core concepts and logic of the project.
-* **AI Assistance:** AI (Gemini) was consulted strictly for theoretical explanations of sorting algorithms to aid conceptual understanding.
