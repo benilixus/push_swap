@@ -1,45 +1,70 @@
-NAME = push_swap
-BONUS_NAME = checker
-INCLUDES = push_swap.h
-BINCLUDES = bonus/checker_bonus.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = push_swap.c push.c swap.c rotate.c reverse_rotate.c \
-	utils.c parse.c atol.c split.c \
-	index.c algo.c free.c calloc.c ft_putstr.c sort_five.c
+NAME = push_swap
+BONUS_NAME = checker
 
-BSRC = bonus/atol_bonus.c bonus/ft_putstr_bonus.c bonus/parse_bonus.c bonus/split_bonus.c \
-	bonus/calloc_bonus.c bonus/get_next_line_bonus.c bonus/push_bonus.c bonus/strcmp_bonus.c \
-	bonus/get_next_line_utils_bonus.c bonus/reverse_rotate_bonus.c bonus/swap_bonus.c \
-	bonus/free_bonus.c bonus/main_bonus.c bonus/rotate_bonus.c bonus/utils_bonus.c bonus/store_utils_bonus.c
+M_SRCS = Mandatory-part/push_swap.c \
+	Mandatory-part/checking_and_parsing/check_all.c \
+	Mandatory-part/checking_and_parsing/check_duplicate.c \
+	Mandatory-part/checking_and_parsing/check_input.c \
+	Mandatory-part/checking_and_parsing/check_overflow.c \
+	Mandatory-part/checking_and_parsing/parsing.c \
+	Mandatory-part/Helper_Functions/ft_atoi.c \
+	Mandatory-part/Helper_Functions/ft_split.c \
+	Mandatory-part/Helper_Functions/helpers.c \
+	Mandatory-part/Helper_Functions/helpers2.c \
+	Mandatory-part/Helper_Functions/indexing.c \
+	Mandatory-part/Linked-Lists/Linked_lists.c \
+	Mandatory-part/Linked-Lists/Linked_lists2.c \
+	Mandatory-part/Operations/operation_push.c \
+	Mandatory-part/Operations/operation_rotate.c \
+	Mandatory-part/Operations/operation_rrotate.c \
+	Mandatory-part/Operations/operation_swap.c \
+	Mandatory-part/Sorting/sort_all.c \
+	Mandatory-part/Sorting/sort_five.c \
+	Mandatory-part/Sorting/sort_three.c
 
-OBJ = $(SRC:.c=.o)
+B_SRCS = Bonus-part/checker.c \
+	Bonus-part/bonus_helpers.c \
+	Bonus-part/get_next_line.c \
+	Bonus-part/get_next_line_utils.c \
+	Bonus-part/checking_and_parsing/check_all.c \
+	Bonus-part/checking_and_parsing/check_duplicate.c \
+	Bonus-part/checking_and_parsing/check_input.c \
+	Bonus-part/checking_and_parsing/check_overflow.c \
+	Bonus-part/checking_and_parsing/parsing.c \
+	Bonus-part/Helper_Functions/ft_atoi.c \
+	Bonus-part/Helper_Functions/ft_split.c \
+	Bonus-part/Helper_Functions/helpers.c \
+	Bonus-part/Helper_Functions/helpers2.c \
+	Bonus-part/Helper_Functions/indexing.c \
+	Bonus-part/Linked-Lists/Linked_lists.c \
+	Bonus-part/Linked-Lists/Linked_lists2.c \
+	Bonus-part/Operations/operation_push.c \
+	Bonus-part/Operations/operation_rotate.c \
+	Bonus-part/Operations/operation_rrotate.c \
+	Bonus-part/Operations/operation_swap.c
 
-BOBJ = $(BSRC:.c=.o)
+M_OBJS = $(M_SRCS:.c=.o)
+B_OBJS = $(B_SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INCLUDES)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.c $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(M_OBJS)
+	$(CC) $(CFLAGS) $(M_OBJS) -o $(NAME)
 
 bonus: $(BONUS_NAME)
 
-$(BONUS_NAME): $(BOBJ) $(BINCLUDES)
-	$(CC) $(CFLAGS) $(BOBJ) -o $(BONUS_NAME)
-
-bonus/%.o: bonus/%.c $(BINCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(BONUS_NAME): $(B_OBJS)
+	$(CC) $(CFLAGS) $(B_OBJS) -o $(BONUS_NAME)
 
 clean:
-	rm -f $(OBJ) $(BOBJ)
+	rm -f $(M_OBJS) $(B_OBJS)
 
 fclean: clean
 	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
-.PHONY: clean
+.PHONY: all bonus clean fclean re
